@@ -72,9 +72,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+        Session::flash('flash_message', 'Category is successfully removed.');
+        return redirect('/categories');
     }
 
     /**
