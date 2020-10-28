@@ -26,13 +26,15 @@ Route::get('/', function () {
     'index' , 'store' , 'destroy', 'update'
 ]); */
 
-Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
-Route::post('/categories', [App\Http\Controllers\CategoryController::class, 'store']);
-Route::delete('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'destroy']);
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
+Route::post('/categories', [App\Http\Controllers\CategoryController::class, 'store'])->middleware('auth');
+Route::delete('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'destroy'])->middleware('auth');
+Route::get('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'edit'])->middleware('auth');
+Route::put('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->middleware('auth');
 
 
 
