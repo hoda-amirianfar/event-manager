@@ -27,6 +27,7 @@ Route::get('/', function () {
 
 Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
 Route::post('/categories', [App\Http\Controllers\CategoryController::class, 'store']);
+Route::delete('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'destroy']);
 
 Auth::routes();
 
