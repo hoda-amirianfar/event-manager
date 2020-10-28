@@ -10,7 +10,7 @@
             <div class="card">
             <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Categories</h3>
             <div class="card-body">
-                <div id="table" class="table-editable">
+                <div id="table" >
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <thead>
                         <tr>
@@ -23,29 +23,31 @@
                     <tbody>
                     @foreach($categories as $category)
                     <tr>
-                        <td class="pt-3-half" contenteditable="true">{{ $counter++ }}</td>
-                        <td class="pt-3-half" contenteditable="true">{{ $category->title }}</td>
-                        <td class="pt-3-half">
-                            <a href="/categories/{{ $category->id }}/update" onclick="event.preventDefault();
-                                document.getElementById('update-form-{{ $category->id }}').submit();">
-                                <i data-feather="edit" aria-hidden="true"></i>
-                            </a>
-                            <form id="update-form-{{ $category->id }}" action="/categories/{{ $category->id }}/update" method="POST" class="d-none">
+                        <td class="pt-3-half" >{{ $counter++ }}</td>
+                        <td class="pt-3-half" >{{ $category->title }}</td>
+                        <td class="pt-3-half"> 
+                            @auth
+                            <form id="update-form-{{ $category->id }}" action="/categories/{{ $category->id }}" method="GET">
                                 @csrf
-                                @method('PUT')
+                                <button type="submit" class="btn btn-primary btn-rounded btn-sm my-0">Edit</button>
                             </form>
+                            @endauth
                         </td>
                         <td class="pt-3-half">
+                            @auth
                             <form id="delete-form-{{ $category->id }}" action="/categories/{{ $category->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button>
-                            </form>    
+                            </form>
+                            @endauth    
                         </td> 
                     </tr>
                     @endforeach
                     
+                    @auth
                     @include('categories.create')
+                    @endauth
                     </tbody>
                 </table>
                 </div>
