@@ -26,6 +26,7 @@
 
         <main class="py-4">
             @include('layouts.flash_messages')
+            @include('layouts.errors')
             @yield('content')
         </main>
     </div>
