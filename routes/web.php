@@ -17,10 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/* Route::resource('/events', 'App\Http\Controllers\EventController')->only([
+    'index'
+]); */
+/* Route::resource('/categories', 'App\Http\Controllers\CategoryController')->only([
+    'index' , 'store' , 'destroy', 'update'
+]); */
+
+Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
+Route::post('/categories', [App\Http\Controllers\CategoryController::class, 'store']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
