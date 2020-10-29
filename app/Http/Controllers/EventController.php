@@ -47,9 +47,10 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return view('events.show', compact('event'));
     }
 
     /**
