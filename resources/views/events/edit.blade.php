@@ -69,7 +69,7 @@
                     </script>
 
             <label for="count_subscriber">Subscriber</label>
-            <input type="number" class="form-control form-control-sm" name="count_subscriber" id="count_subscriber" value="{{ $event->count_subscriber }}" min="0" max="1000" step="10" placeholder="100" />
+            <input type="number" class="form-control form-control-sm" name="count_subscriber" id="count_subscriber" value="{{ $event->count_subscriber }}" min="0" max="1000"placeholder="100" />
 
 
             <label for="address">Address</label>
