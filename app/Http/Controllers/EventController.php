@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -14,8 +15,8 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $events = Event::orderBy('begin_at', 'DESC')->get();
+    {   
+        $events = Event::where('begin_at', '>', Carbon::now())->orderBy('begin_at', 'ASC')->get();
         return view('events.index', compact('events'));
     }
 
