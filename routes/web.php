@@ -19,8 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/events', [App\Http\Controllers\EventController::class , 'index']);
-Route::get('/events', [App\Http\Controllers\EventController::class , 'show']);
-Route::resource('/events/{id}', 'App\Http\Controllers\EventController')->only([
+Route::get('/events/{id}', [App\Http\Controllers\EventController::class , 'show']);
+Route::resource('/events', 'App\Http\Controllers\EventController')->only([
     'create', 'store','destroy', 'edit', 'update'
 ])->middleware('auth');
 
