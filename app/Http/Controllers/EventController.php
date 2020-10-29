@@ -72,9 +72,12 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->update($request->all());
+        Session::flash('flash_message', 'Event is successfully updated.');
+        return redirect('/events');
     }
 
     /**
