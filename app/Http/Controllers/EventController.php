@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\Category;
 use Carbon\Carbon;
 
 class EventController extends Controller
@@ -26,8 +27,9 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('events.create');
+    {   
+        $categories = Category::all();
+        return view('events.create', compact('categories'));
     }
 
     /**
