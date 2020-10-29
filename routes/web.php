@@ -18,10 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-/* Route::resource('/events', 'App\Http\Controllers\EventController')->only([
-    'index'
-]); */
+Route::resource('/events', [App\Http\Controllers\EventController::class , 'index']);
+Route::resource('/events', 'App\Http\Controllers\EventController')->only([
+    'store','destroy', 'edit', 'update', 'show'
+])->middleware('auth');
 
 Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
 Route::resource('/categories', 'App\Http\Controllers\CategoryController')->only([
