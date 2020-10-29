@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/events', [App\Http\Controllers\EventController::class , 'index']);
-Route::resource('/events', 'App\Http\Controllers\EventController')->only([
-    'store','destroy', 'edit', 'update', 'show'
+Route::get('/events', [App\Http\Controllers\EventController::class , 'index']);
+Route::get('/events', [App\Http\Controllers\EventController::class , 'show']);
+Route::resource('/events/{id}', 'App\Http\Controllers\EventController')->only([
+    'create', 'store','destroy', 'edit', 'update'
 ])->middleware('auth');
 
 Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
