@@ -11,6 +11,8 @@ class Event extends Model
 
     protected $table = 'events';
     protected $fillable = ['title', 'category_id'];
+    protected $dates = ['begin_at' , 'end_at'];
+    //protected $with = ['categories'];
 
     public function category(){
         return $this->belongsTo('App\Models\Category', 'category_id');
