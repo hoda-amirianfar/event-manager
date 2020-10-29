@@ -10,7 +10,7 @@ class Event extends Model
     use HasFactory;
 
     protected $table = 'events';
-    protected $fillable = ['title', 'category_id'];
+    protected $fillable = ['title', 'category_id', 'description', 'link', 'begin_at', 'end_at', 'count_subscriber', 'address', 'price'];
     protected $dates = ['begin_at' , 'end_at'];
     //protected $with = ['categories'];
 
