@@ -16,8 +16,10 @@
                         <tr>
                             <th class="text-center">#</th>
                             <th class="text-center">Title</th>
+                            @auth
                             <th class="text-center">Edit</th>
                             <th class="text-center">Remove</th>
+                            @endauth
                         </tr>
                     </thead>
                     <tbody>
@@ -25,23 +27,21 @@
                     <tr>
                         <td class="pt-3-half" >{{ $counter++ }}</td>
                         <td class="pt-3-half" >{{ $category->title }}</td>
+                        @auth
                         <td class="pt-3-half"> 
-                            @auth
                             <form id="update-form-{{ $category->id }}" action="/categories/{{ $category->id }}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-primary btn-rounded btn-sm my-0">Edit</button>
                             </form>
-                            @endauth
                         </td>
                         <td class="pt-3-half">
-                            @auth
                             <form id="delete-form-{{ $category->id }}" action="/categories/{{ $category->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button>
-                            </form>
-                            @endauth    
+                            </form> 
                         </td> 
+                        @endauth 
                     </tr>
                     @endforeach
                     
