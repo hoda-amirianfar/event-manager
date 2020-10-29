@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Support\Facades\Session;
 
@@ -77,7 +76,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->update($request->all());
-        Session::flash('flash_message', 'Category is successfully removed.');
+        Session::flash('flash_message', 'Category is successfully updated.');
         return redirect('/categories');
     }
 
