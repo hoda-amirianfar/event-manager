@@ -29,7 +29,7 @@
                         <td class="pt-3-half" >{{ $category->title }}</td>
                         @auth
                         <td class="pt-3-half"> 
-                            <form id="update-form-{{ $category->id }}" action="/categories/{{ $category->id }}" method="GET">
+                            <form id="update-form-{{ $category->id }}" action="/categories/{{ $category->id }}/edit" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-primary btn-rounded btn-sm my-0">Edit</button>
                             </form>
